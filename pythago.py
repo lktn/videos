@@ -16,8 +16,6 @@ class am(Scene):
 
         self.play(Create(group1))
         self.play(Write(zela_a1), Write(zela_b1))
-        
-        #grid = NumberPlane()
 
         group2 = group1.copy()
         group2[0].color = YELLOW
@@ -44,7 +42,6 @@ class am(Scene):
 
         line1 = Line(start = triangle3.get_vertex_groups()[0][0] , end = triangle3.get_vertex_groups()[0][1])
         line2 = Line(start = triangle3.get_vertex_groups()[0][0] , end = triangle3.get_vertex_groups()[0][2])
-        
         
         zela_c1 = MathTex("c").next_to(line1.get_center(), direction=LEFT)
         zela_c2 = MathTex("c").next_to(line2.get_center(), direction=DOWN)
@@ -76,16 +73,12 @@ class am(Scene):
         f1 = Brace(nhom, LEFT)
         f2 = MathTex("a+b").next_to(f1, LEFT, buff=0.2)
         bracet_text = VGroup(f1, f2)
+        
         self.play(Transform(VGroup(zela_b1, zela_a2), bracet_text))
-        
         self.play(Write(matn2[0][9:13]))
-
-        self.play(TransformFromCopy(bracet_text.copy(), matn2[0][13:18] ))
-        
+        self.play(TransformFromCopy(bracet_text.copy(), matn2[0][13:18]))
         self.play(Write(matn2[0][18:19]))
-
-        self.play(TransformFromCopy(VGroup(zela_b2, zela_a1).copy(), matn2[0][19:24] ))
-        
+        self.play(TransformFromCopy(VGroup(zela_b2, zela_a1).copy(), matn2[0][19:24]))
         self.play(Write(matn2[0][8:9]))
         
         matn3 = MathTex("$\dfrac{1}{2}(a+b)^2=ab+\dfrac{1}{2}c^{2}$", tex_environment = "center").next_to(kole_shekl, UP).shift(UP*3)
@@ -100,6 +93,4 @@ class am(Scene):
         matn6 = MathTex("$a^2+b^2=c^2$", tex_environment = "center" ).next_to(kole_shekl, UP).shift(UP*3)
         self.play(TransformMatchingShapes(matn5, matn6))
         self.play((Circumscribe(matn6)))
-        #nhom3 = VGroup(matn6, group2, triangle3, zela_a1, zela_b2, zela_c2, zela_c1, bracet_text, angle3, group1)
-        #self.play(FadeOut(nhom3))
         self.wait(1)
