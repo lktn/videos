@@ -4,7 +4,6 @@ config.pixel_height = 1920
 config.pixel_width = 1080
 class SinApproximation(Scene):
     def construct(self):
-        # Vẽ trục tọa độ
         axes = Axes(x_range=[-2*PI, 2*PI], y_range=[-3, 3])
         self.play(Create(axes))
 
@@ -20,11 +19,9 @@ class SinApproximation(Scene):
         nhom = VGroup(a, a1, a2, a3, a4, a5, a6, a7, a8).scale(1.25)
         nhom.move_to((4.5)*UP)
 
-        # Vẽ đồ thị hàm sin
         sin = axes.plot(np.sin, color=RED)
         self.play(Create(sin), Write(a))
 
-        # Vẽ chuỗi Taylor của hàm sin
         taylor1 = axes.plot(lambda x: x, color=BLUE)
         self.play(Create(taylor1), ReplacementTransform(a, a1))
         self.wait(0.7)
@@ -62,7 +59,3 @@ class SinApproximation(Scene):
         self.play(a8.animate.shift(UP*(-4.5)))
         self.play((Circumscribe(a8)))
         self.play(FadeOut(a8))
-
-if __name__ == "__main__":
-    scene = SinApproximation()
-    scene.render()
