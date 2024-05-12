@@ -16,8 +16,7 @@ class SinApproximation(Scene):
         a6 = MathTex("\\sin(x) \\approx x-\\frac{x^3}{3!}+\\frac{x^5}{5!}-\\frac{x^7}{7!}+\\frac{x^9}{9!}-\\frac{x^{11}}{11!}")
         a7 = MathTex("\\sin(x) \\approx x-\\frac{x^3}{3!}+\\frac{x^5}{5!}-\\frac{x^7}{7!}+\\frac{x^9}{9!}-\\frac{x^{11}}{11!}+\\frac{x^{13}}{13!}")
         a8 = MathTex(r"\sin(x)=\sum_{n=0}^{\infty}\frac{(-1)^n\cdot x^{2n+1}}{(2n+1)!}")
-        nhom = VGroup(a, a1, a2, a3, a4, a5, a6, a7, a8).scale(1.25)
-        nhom.move_to((4.5)*UP)
+        nhom = VGroup(a, a1, a2, a3, a4, a5, a6, a7, a8).scale(1.25).move_to((4.5)*UP)
 
         sin = axes.plot(np.sin, color=RED)
         self.play(Create(sin), Write(a))
