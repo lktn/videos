@@ -1,7 +1,7 @@
 from manim import *
 config.pixel_height = 1920*2
 config.pixel_width = 1080*2
-class Valentine(Scene):
+class Heart(Scene):
     def construct(self):
         axes = Axes(x_range=(-2.5, 2.5, 1),
                     y_range=(-2, 3, 1),
