@@ -28,15 +28,12 @@ class RotateTriangles(Scene):
         def ab(t):
             return t**2
 
-        def abc(t):
-            return t
-
         def ba(t):
             return  1 - (1 - t) ** 2
 
         self.play(DrawBorderThenFill(nhom))
         self.play(Rotate(VGroup(a1, a2, a4), angle=-PI, about_point=b), rate_func=ab)
-        self.play(Rotate(VGroup(a1, a2), angle=-PI, about_point=[((4*3**0.5-3)**0.5-3)/2, (3**0.5)/2, 0], rate_func=abc))
+        self.play(Rotate(VGroup(a1, a2), angle=-PI, about_point=[((4*3**0.5-3)**0.5-3)/2, (3**0.5)/2, 0], rate_func=linear))
         self.play(Rotate(VGroup(a2), angle=-PI, about_point=[((4*3**0.5-3)**0.5-1)/2, (3**0.5)/2, 0], rate_func=ba))
         self.add(f2)
         self.wait(3)
