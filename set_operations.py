@@ -8,11 +8,11 @@ config.frame_width = config.frame_height * config.pixel_width / config.pixel_hei
 class SetOperations(Scene):
     def construct(self):
         set1 = Circle(radius=2, color=PINK).move_to(LEFT)
-        a = MathTex(r"A").set_color(PINK).move_to(UP*(-2.5)+RIGHT*(-1.5))
+        a = MathTex(r"A").set_color(PINK).move_to(-RIGHT*1.5-UP*2.5)
         set1_group = VGroup(set1, a)
 
         set2 = Circle(radius=2, color=BLUE).move_to(RIGHT)
-        b = MathTex(r"B").set_color(BLUE).move_to(UP*(-2.5)+RIGHT*(1.5))
+        b = MathTex(r"B").set_color(BLUE).move_to(RIGHT*1.5-UP*2.5)
         set2_group = VGroup(set2, b)
 
         intersection = Intersection(set1, set2, color=PURPLE, fill_opacity=0.5)
@@ -37,4 +37,4 @@ class SetOperations(Scene):
         self.play(ReplacementTransform(diff1, diff2), TransformMatchingShapes(f3, f4))
         self.wait(2)
         self.play(ReplacementTransform(diff2, exclusion), TransformMatchingShapes(f4, f5))
-        self.wait(6)
+        self.wait(2)
