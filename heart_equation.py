@@ -11,12 +11,12 @@ class Heart(Scene):
         m = ValueTracker(0)
         color = "#FF08CB"
 
-        a1 = lambda x: (np.cbrt(x))**2+(0.9*(3.3-x**2)**(1/2))*np.sin(m.get_value()*np.pi*x)
+        a1 = lambda x: np.cbrt(x**2)+0.9*np.sqrt(3.3-x**2)*np.sin(m.get_value()*np.pi*x)
         a2 = always_redraw(lambda: axes.plot(a1, x_range=[-np.sqrt(330)/10, np.sqrt(330)/10], color=color))
 
         a3 = Text("Heart  Equation", font_size=20).scale(4).next_to(axes, DOWN, buff=0.8)
 
-        a4 = MathTex(r"y=x^{\dfrac{2}{3}}+ 0.9\left(3.3-x^2\right)^{\dfrac{1}{2}}\cdot \sin(m\pi x)",
+        a4 = MathTex(r"y=x^\dfrac{2}{3}+0.9(3.3-x^2)^\dfrac{1}{2}\cdot \sin(m\pi x)",
                                     font_size=20).scale(4).next_to(a3, DOWN, buff=0.8)
 
         a5 = Text(r"m=", font_size=26).scale(4).next_to(a4, DOWN*4).shift(LEFT*0.8)
