@@ -29,7 +29,7 @@ class RotateTriangles(Scene):
             return t**2
 
         def ba(t):
-            return  1 - (1 - t) ** 2
+            return  2*t-t**2
 
         self.play(DrawBorderThenFill(nhom))
         self.play(Rotate(VGroup(a1, a2, a4), angle=-PI, about_point=b), rate_func=ab)
