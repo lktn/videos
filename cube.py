@@ -4,7 +4,7 @@ import numpy as np
 config.pixel_height = 1920
 config.pixel_width = 1080
 
-class Cube(ThreeDScene):
+class Cubes(ThreeDScene):
     def construct(self):
         a = 6
         b = a*(3-5**0.5)/4
