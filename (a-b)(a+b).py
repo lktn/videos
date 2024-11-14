@@ -46,5 +46,5 @@ class RiemannExplicit(Scene):
         )
         self.wait()
         self.play(Write(a4[2]), TransformFromCopy(a9, a4[3]), TransformFromCopy(a13, a4[4]))
-        self.play((Circumscribe(a4)))
+        self.play(Circumscribe(a4))
         self.wait(1)
