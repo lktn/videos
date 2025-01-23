@@ -2,7 +2,7 @@ from manim import *
 config.pixel_height = 1920
 config.pixel_width = 1080
 
-class B(Scene):
+class Heron(Scene):
     def construct(self):
         a = 1.1*np.array([-1-np.sqrt(5),-2, 0])
         b = 1.1*np.array([-3+np.sqrt(5), 2, 0])
@@ -84,43 +84,3 @@ class B(Scene):
         self.play(Circumscribe(a20, color=GREEN, stroke_width=5))
         self.wait()
         self.play(FadeOut(VGroup(a20, a6[0], a18, a1, a2, a3, a4, a5)))
-
-class GauusIntegral(Scene):
-    def construct(self):
-        v = [
-            MathTex(r"\int_{-\infty}^{+\infty}e^{-x^2}dx"),
-            MathTex(r"\left(\int_{-\infty}^{+\infty}e^{-x^2}dx\right)^1"),
-            MathTex(r"\left(\int_{-\infty}^{+\infty}e^{-x^2}dx\right)^{2\cdot\frac12}"),
-            MathTex(r"\left(\left(\int_{-\infty}^{+\infty}e^{-x^2}dx\right)^2\right)^{\frac12}"),
-            MathTex(r"\Bigg(\left(\int_{-\infty}^{+\infty}e^{-x^2}dx\right)\left(\int_{-\infty}^{+\infty}e^{-x^2}dx\right)\Bigg)^{\frac12}"),
-            MathTex(r"\left(\int_{-\infty}^{+\infty}e^{-x^2}dx\int_{-\infty}^{+\infty}e^{-y^2}dy\right)^{\frac12}"),
-            MathTex(r"\left(\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}e^{-x^2}e^{-y^2}dx\ dy\right)^{\frac12}"),
-            MathTex(r"\left(\iint_{\mathbb{R}^2}^{}e^{-x^2}e^{-y^2}d(x,y)\right)^{\frac12}"),
-            MathTex(r"\left(\iint_{\mathbb{R}^2}^{}e^{+(-x^2)+(-y^2)}d(x,y)\right)^{\frac12}"),
-            MathTex(r"\left(\iint_{\mathbb{R}^2}^{}e^{-\left((\rho\cos\theta)^2+(\rho\sin\theta)^2\right)}d(x,y)\right)^{\frac12}"),
-            MathTex(r"\left(\iint e^{-\left((\rho\cos\theta)^2+(\rho\sin\theta)^2\right)}\left|\frac{d(x,y)}{d(\rho,\theta)}\right|\right)^{\frac12}"),
-            MathTex(r"\left(\iint_{\mathbb{R}^+\times [0,2\pi]}^{} e^{-\left((\rho\cos\theta)^2+(\rho\sin\theta)^2\right)}\left|\frac{d(x,y)}{d(\rho,\theta)}\right|d(\rho,\theta)\right)^{\frac{1}{2}}"),
-            MathTex(r"\Bigg(\iint_{\mathbb{R}^+\times[0,2\pi]}^{}e^{-\left((\rho\cos\theta)^2+(\rho\sin\theta)^2\right)}.\\ .\begin{vmatrix}\begin{pmatrix}\dfrac{\partial}{\partial \rho}x(\rho,\theta)&\dfrac{\partial}{\partial\theta}x(\rho,\theta)\\ \dfrac{\partial}{\partial \rho}y(\rho,\theta)& \dfrac{\partial}{\partial\theta}y(\rho,\theta)\end{pmatrix}\end{vmatrix}\ \ d(\rho,\theta)\Bigg)^{\frac12}"),
-            MathTex(r"\Bigg(\iint_{\mathbb{R}^+\times[0,2\pi]}^{}e^{-\left(\rho^2\cos^2\theta+(\rho\sin\theta)^2\right)}.\\ .\begin{vmatrix}\begin{pmatrix}\dfrac{\partial}{\partial \rho}\rho\cos\theta&\dfrac{\partial }{\partial\theta}x(\rho,\theta)\\ \dfrac{\partial}{\partial \rho}y(\rho,\theta)& \dfrac{\partial}{\partial\theta}\rho\sin\theta\end{pmatrix}\end{vmatrix}\ \ d\rho\ d\theta\Bigg)^{\frac12}"),
-            MathTex(r"\Bigg(\int_{0}^{\infty}d\rho\ e^{-\rho^2}\int_{0}^{2\pi}d\theta\cdot\rho\Big(\cos^2\theta+\sin^2\theta\Big)\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Bigg(\int_{0}^{\infty}d\rho\ e^{-\rho^2}\int_{0}^{2\pi}d\theta\cdot\rho\cdot1\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Bigg(\int_{0}^{\infty}d\rho\ \rho e^{-\rho^2}\int_{0}^{2\pi}d\theta\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Bigg(\int_{0}^{\infty}d\rho\ \rho\ e^{-\rho^2}2\pi\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Bigg(2\pi\int_{0}^{\infty}d\rho\ \rho\ e^{-\rho^2}\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Bigg(2\pi\int_{0}^{\infty}d\rho\ \left(-\frac{1}{2}\right)(-2)\rho\ e^{-\rho^2}\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Bigg(2\pi\left(-\frac{1}{2}\right)\int_{0}^{\infty}d\rho\ (-2)\rho\ e^{-\rho^2}\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Bigg(-\pi\int_{0}^{\infty}d\rho\ \frac{\partial}{\partial \rho} (-\rho^2)\ e^{-\rho^2}\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Bigg(-\pi\int_{0}^{\infty}d\rho\ \frac{\partial}{\partial \rho}\ e^{-\rho^2}\Bigg)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Big(-\pi\begin{bmatrix}e^{-\rho^2}\end{bmatrix}^{\infty}_0\Big)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Big(-\pi\begin{bmatrix}e^{-\infty^2}-e^{-0^2}\end{bmatrix}\Big)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Big(-\pi\begin{bmatrix}0-1\end{bmatrix}\Big)^{\Large\frac{1}{2}}"),
-            MathTex(r"\Big(-\pi\begin{bmatrix}-1\end{bmatrix}\Big)^{\Large\frac{1}{2}}"),
-            MathTex(r"(+\pi)^{\Large\frac{1}{2}}"),
-            MathTex(r"(\pi)^{\Large\frac{1}{2}}"),
-            MathTex(r"\pi^\frac12"),
-            MathTex(r"\sqrt{\pi}")
-        ]
-        self.play(Write(v[0]))
-
-        for i in range(len(v)-1): self.play(TransformMatchingShapes(v[i], v[i+1]))
-        self.wait(3)
