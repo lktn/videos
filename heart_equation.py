@@ -10,10 +10,10 @@ class Heart(Scene):
             y_length=5
         )
         axes.scale(0.7).scale(4).move_to(2*UP)
-
+        
         m = ValueTracker(0)
         color = "#FF08CB"
-
+        
         func = lambda x: np.cbrt(x**2) + 0.9 * np.sqrt(3.3-x**2) * np.sin(m.get_value()*PI*x)
         a2 = always_redraw(lambda: axes.plot(func, x_range=[-np.sqrt(3.3), np.sqrt(3.3), 0.01], color=color))
         a3 = Text("Heart  Equation", font_size=20).scale(4).next_to(axes, DOWN, buff=0.8)
@@ -28,7 +28,7 @@ class Heart(Scene):
                 color=color
             ).scale(4).next_to(a5, RIGHT, buff=0.2)
         )
-
+        
         nhom = VGroup(axes, a2, a3, a4, a5, a6)
         self.play(Write(nhom))
         self.play(m.animate(run_time=7).set_value(6.5), rate_func=rate_functions.smooth)
