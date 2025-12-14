@@ -6,10 +6,11 @@ class MyScene(Scene):
     def construct(self):
         axes = Axes(x_range=[-2*PI, 2*PI, 1], y_range=[-3, 3, 1])
             
-        v = [axes.plot(lambda x: np.sin(x), color=RED)]
-        for n in range(1, 8):
-            v.append(axes.plot(lambda x: sum(((-1)**i*x**(2*i+1))/math.factorial(2*i+1) for i in range(n)), color=BLUE))
-        v.append(axes.plot(lambda x: np.sin(x), color=BLUE))
+        v = [
+            axes.plot(lambda x: np.sin(x), color=RED),
+            *[axes.plot(lambda x: sum(((-1)**i*x**(2*i+1))/math.factorial(2*i+1) for i in range(n)), color=BLUE)],
+            axes.plot(lambda x: np.sin(x), color=BLUE)
+        ]
 
         g = VGroup(
             MathTex(r"\sin(x)"),
