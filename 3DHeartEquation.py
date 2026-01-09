@@ -16,19 +16,17 @@ def ImplicitSurface(f, x_range, y_range, z_range, axes):
     dz = (z_range[1] - z_range[0]) / (z_range[2] - 1)
 
     verts, faces, _, _ = marching_cubes(f(X, Y, Z), level=0, spacing=(dx, dy, dz))
-
-    verts[:, 0] += x_range[0]
-    verts[:, 1] += y_range[0]
-    verts[:, 2] += z_range[0]
+    verts += np.array([x_range[0], y_range[0], z_range[0]])
 
     return VGroup(*[
         Polygon(
             *[axes.c2p(*p) for p in verts[i]],
             fill_opacity=1,
-            stroke_width=0.7
+            stroke_width=0.7,
+            shade_in_3d=True
         )
         for i in faces
-    ]).set_shade_in_3d(True)
+    ])
 
 class HeartEquation(ThreeDScene):
     def construct(self):
