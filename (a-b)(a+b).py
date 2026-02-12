@@ -5,7 +5,7 @@ config.pixel_width = 2700
 config.frame_height = x
 config.frame_width = 9*x/16
 
-class RiemannExplicit(Scene):
+class MyScene(Scene):
     def construct(self):
         a = "#8031D5"
         b = {"color": a, "fill_color": a, "fill_opacity": 1}
