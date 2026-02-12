@@ -8,7 +8,7 @@ class MyScene(Scene):
             
         v = [
             axes.plot(lambda x: np.sin(x), color=RED),
-            *[axes.plot(lambda x: sum(((-1)**i*x**(2*i+1))/math.factorial(2*i+1) for i in range(n)), color=BLUE)],
+            *[axes.plot(lambda x: sum(((-1)**i*x**(2*i+1))/math.factorial(2*i+1) for i in range(7)), color=BLUE)],
             axes.plot(lambda x: np.sin(x), color=BLUE)
         ]
 
@@ -37,3 +37,4 @@ class MyScene(Scene):
         self.play(g[8].animate.shift(-4.5*UP))
         self.play(Circumscribe(g[8]))
         self.play(FadeOut(g[8]))
+
