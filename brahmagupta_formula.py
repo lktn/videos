@@ -39,12 +39,12 @@ class BrahmaguptaFormula(Scene):
         e4 = MathTex(r"2S=ab\sin A+cd\sin", r"(\pi-A)")
         e5 = MathTex(r"2S=ab\sin A+cd\sin", "A")
         e6 = MathTex("2", r"S=(ab+cd)\sin A")
-        e7 = MathTex("4", r"S^2=(ab+cd)^2", r"\sin^2A")
-        e8 = MathTex(r"4S^2=(ab+cd)^2", r"(1-\cos^2A)")
+        e7 = MathTex("4", "S^2=(ab+cd)^2", r"\sin^2A")
+        e8 = MathTex("4S^2=(ab+cd)^2", r"(1-\cos^2A)")
         e9 = MathTex(r"4S^2=(ab+cd)^2-(ab+cd)^2\cos^2A").scale(0.8)
         e10 = MathTex(r"16S^2=4(ab+cd)^2-4(ab+cd)^2\cos^2A").scale(0.8)
-        e11 = MathTex(r"16S^2=(2ab+2cd)^2-", r"(2ab+2cd)^2\cos^2A").scale(0.8)
-        e12 = MathTex(r"16S^2=(2ab+2cd)^2-", r"(a^2+b^2-c^2-d^2)^2").scale(0.8)
+        e11 = MathTex("16S^2=(2ab+2cd)^2-", r"(2ab+2cd)^2\cos^2A").scale(0.8)
+        e12 = MathTex("16S^2=(2ab+2cd)^2-", "(a^2+b^2-c^2-d^2)^2").scale(0.8)
         e13 = MathTex(
             r"16S^2&=\left(2ab+2cd-a^2-b^2+c^2+d^2\right)\\",
             r"&\times\left(2ab+2cd+a^2+b^2-c^2-d^2\right)"
@@ -124,11 +124,11 @@ class BrahmaguptaFormula(Scene):
         
         self.play(
             ReplacementTransform(e6[0], e7[0]),
-            TransformMatchingShapes(e6[1], VGroup(e7[1], e7[2]))
+            TransformMatchingShapes(e6[1], e7[1:3])
         )
         self.wait(0.5)
         self.play(
-            TransformMatchingShapes(VGroup(e7[0], e7[1]), e8[0]),
+            TransformMatchingShapes(e7[:2], e8[0]),
             ReplacementTransform(e7[2], e8[1])
         )
         self.wait(0.5)
