@@ -22,7 +22,7 @@ class Heart(Scene):
             )
         )
         a3 = Text("Heart  Equation", font_size=20).scale(4).next_to(axes, DOWN, buff=0.8)
-        a4 = MathTex(r"y=x^\dfrac{2}{3}+0.9(3.3-x^2)^\dfrac{1}{2}\cdot \sin(m\pi x)", font_size=20).scale(4).next_to(a3, DOWN, buff=0.8)
+        a4 = MathTex(r"y=x^\frac23 + 0.9(3.3 - x^2)^\frac12\cdot\sin(m\pi x)", font_size=20).scale(4).next_to(a3, DOWN, buff=0.8)
         a5 = Text("m=", font_size=26).scale(4).next_to(a4, DOWN*4).shift(LEFT*0.8)
         a6 = always_redraw(
             lambda: DecimalNumber(
