@@ -2,7 +2,7 @@ from manim import *
 config.pixel_height = 1920
 config.pixel_width = 1080
 
-class Heron(Scene):
+class HeronFormula(Scene):
     def construct(self):
         a = 1.1*np.array([-1-np.sqrt(5),-2, 0])
         b = 1.1*np.array([-3+np.sqrt(5), 2, 0])
@@ -27,27 +27,27 @@ class Heron(Scene):
         a7 = a1.copy()
         self.play(a7.animate.set_fill(BLUE, opacity=0.5))
         self.play(ReplacementTransform(a7, a6[0]))
-        self.play(Write(VGroup(a6[1], a6[2])))
+        self.play(Write(a6[1:3]))
         self.wait()
 
         a8 = MathTex("Area=\\frac{ab}2", r"\sqrt{1-\cos^2(C)}").scale(1.2).move_to(6*DOWN)
-        self.play(VGroup(a6[0], a6[1]).animate.move_to(a8[0].get_center()), ReplacementTransform(a6[2], a8[1]))
+        self.play(a6[:2].animate.move_to(a8[0].get_center()), ReplacementTransform(a6[2], a8[1]))
         self.wait()
 
         a9 = MathTex("Area=\\frac{ab}2", r"\sqrt{1-\left(\frac{a^2+b^2-c^2}{2ab}\right)^2}").scale(1.2).move_to(6*DOWN)
-        self.play(VGroup(a6[0], a6[1]).animate.move_to(a9[0].get_center()), ReplacementTransform(a8[1], a9[1]))
+        self.play(a6[:2].animate.move_to(a9[0].get_center()), ReplacementTransform(a8[1], a9[1]))
         self.wait()
 
         a10 = MathTex("Area=\\frac{ab}2", r"\sqrt{1-\frac{(a^2+b^2-c^2)^2}{(2ab)^2}}").scale(1.2).move_to(6*DOWN)
-        self.play(VGroup(a6[0], a6[1]).animate.move_to(a10[0].get_center()), TransformMatchingShapes(a9[1], a10[1]))
+        self.play(a6[:2].animate.move_to(a10[0].get_center()), TransformMatchingShapes(a9[1], a10[1]))
         self.wait()
 
         a11 = MathTex("Area=\\frac{ab}2", r"\sqrt\frac{(2ab)^2-(a^2+b^2-c^2)^2}{(2ab)^2}").scale(1.2).move_to(6*DOWN)
-        self.play(VGroup(a6[0], a6[1]).animate.move_to(a11[0].get_center()), TransformMatchingShapes(a10[1], a11[1]))
+        self.play(a6[:2].animate.move_to(a11[0].get_center()), TransformMatchingShapes(a10[1], a11[1]))
         self.wait()
 
         a12 = MathTex("Area=", "\\frac{ab}2", r"\cdot\frac{\sqrt{(2ab)^2-(a^2+b^2-c^2)^2}}{2ab}").scale(1.2).move_to(6*DOWN)
-        self.play(VGroup(a6[0], a6[1]).animate.move_to(VGroup(a12[0], a12[1]).get_center()), ReplacementTransform(a11[1], a12[2]))
+        self.play(a6[:2].animate.move_to(a12[:2].get_center()), ReplacementTransform(a11[1], a12[2]))
         self.wait()
 
         a13 = MathTex("Area=", r"\frac{\sqrt{(2ab)^2-(a^2+b^2-c^2)^2}}4").scale(1.2).move_to(6*DOWN)
@@ -75,7 +75,7 @@ class Heron(Scene):
         self.wait()
 
         a19 = MathTex("Area=", "\\sqrt{(p-a)(p-b)(p-c)", "p}").scale(1.2).move_to(6*DOWN)
-        self.play(a6[0].animate.scale(8/7).move_to(a19[0].get_center()), TransformMatchingShapes(a17[1], VGroup(a19[1], a19[2])))
+        self.play(a6[0].animate.scale(8/7).move_to(a19[0].get_center()), TransformMatchingShapes(a17[1], a19[1:3]))
         self.wait()
 
         a20 = MathTex("Area=", "\\sqrt{p(p-a)(p-b)(p-c)}").scale(1.2).move_to(6*DOWN)
