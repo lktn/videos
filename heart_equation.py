@@ -14,11 +14,16 @@ class Heart(Scene):
         m = ValueTracker(0)
         color = "#FF08CB"
         
-        func = lambda x: np.cbrt(x**2) + 0.9 * np.sqrt(3.3-x**2) * np.sin(m.get_value()*PI*x)
-        a2 = always_redraw(lambda: axes.plot(func, x_range=[-np.sqrt(3.3), np.sqrt(3.3), 0.01], color=color))
+        a2 = always_redraw(
+            lambda: axes.plot(
+                lambda x: np.cbrt(x**2) + 0.9 * np.sqrt(3.3 - x**2) * np.sin(m.get_value()*PI*x), 
+                x_range=[-np.sqrt(3.3), np.sqrt(3.3), 0.01],
+                color=color
+            )
+        )
         a3 = Text("Heart  Equation", font_size=20).scale(4).next_to(axes, DOWN, buff=0.8)
         a4 = MathTex(r"y=x^\dfrac{2}{3}+0.9(3.3-x^2)^\dfrac{1}{2}\cdot \sin(m\pi x)", font_size=20).scale(4).next_to(a3, DOWN, buff=0.8)
-        a5 = Text(r"m=", font_size=26).scale(4).next_to(a4, DOWN*4).shift(LEFT*0.8)
+        a5 = Text("m=", font_size=26).scale(4).next_to(a4, DOWN*4).shift(LEFT*0.8)
         a6 = always_redraw(
             lambda: DecimalNumber(
                 number=m.get_value(),
